@@ -1,4 +1,8 @@
 venv3.8/
 logs/
 src/__pycache__/
+<<<<<<< HEAD
 src/pipeline/__pycache__/
+=======
+src/pipeline/__pycache__/
+>>>>>>> db37e43df6e0846674c879a0bf71ca9c9894f487
