@@ -38,6 +38,6 @@ jobs:
         uses: aws-actions/amazon-ecs-deploy-task-definition@v1
         with:
           task-definition: ecs-task-definition.json
-          service: mlops-recommendation
+          service: mlops-recommendation-service-ltnqnlqd
           cluster: mlops-cluster
           wait-for-service-stability: true
