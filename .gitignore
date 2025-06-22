@@ -2,4 +2,3 @@ venv3.8/
 logs/
 src/__pycache__/
 src/pipeline/__pycache__/
-image.png
