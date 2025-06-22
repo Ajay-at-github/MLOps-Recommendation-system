@@ -41,7 +41,7 @@
 
 
 
-name: CI/CD to AWS ECR
+name: CI/CD to AWS ECR and ECS
 
 on:
   push:
@@ -50,6 +50,12 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+
+    env:
+      AWS_REGION: ap-south-1
+      ECR_REGISTRY: 867344444138.dkr.ecr.ap-south-1.amazonaws.com
+      ECR_REPOSITORY: mlops-recommendation
+      IMAGE_TAG: latest
 
     steps:
       - name: Checkout code
@@ -60,19 +66,16 @@ jobs:
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: ap-south-1
+          aws-region: ${{ env.AWS_REGION }}
 
       - name: Login to Amazon ECR
         uses: aws-actions/amazon-ecr-login@v1
 
-      - name: Build and push Docker image
-        env:
-          ECR_REGISTRY: 867344444138.dkr.ecr.ap-south-1.amazonaws.com
-          ECR_REPOSITORY: mlops-recommendation
-          IMAGE_TAG: latest
+      - name: Build and push Docker image to ECR
         run: |
-          docker build -t $ECR_REGISTRY:$IMAGE_TAG .
-          docker push $ECR_REGISTRY:$IMAGE_TAG
+          IMAGE_URI=$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+          docker build -t $IMAGE_URI .
+          docker push $IMAGE_URI
 
       - name: Deploy to ECS
         uses: aws-actions/amazon-ecs-deploy-task-definition@v1
