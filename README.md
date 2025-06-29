@@ -4,8 +4,10 @@
 
 This repository demonstrates how to deploy an end-to-end machine learning application using CI/CD pipelines and GitHub Actions, integrated with Amazon ECR and Amazon ECS (Fargate). It provides a practical, hands-on approach to deploying ML models in production, making it easier for developers—especially beginners—to adopt MLOps workflows. By leveraging GitHub Actions for automation and AWS services for containerization and deployment, this project streamlines the delivery process, ensuring that machine learning models remain up-to-date, scalable, and accessible.
 
-![image](https://github.com/Harly-1506/MLOps-Recommendation/assets/86733695/a43f5bd7-e25b-4df6-84a8-3d8f0fc2d99d)
-     
+
+![aws](https://github.com/user-attachments/assets/787aa4ba-988c-4ecb-8909-55365c5c1567)
+
+
 ### Run in localhost:
 
 ```zsh
